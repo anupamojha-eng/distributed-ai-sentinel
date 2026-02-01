@@ -1,0 +1,4 @@
+RUNBOOK-001: HikariPool Connection Timeout
+SYMPTOM: "Connection is not available" logs in Payment Service.
+CAUSE: Usually caused by the 'max-lifetime' setting being longer than the database's wait_timeout.
+FIX: Reduce spring.datasource.hikari.max-lifetime to 580000ms.

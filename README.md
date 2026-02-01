@@ -1,23 +1,56 @@
-# Distributed AI Sentinel 🚀
+# 🛡️ Distributed AI Sentinel
+### *Turning Distributed System Chaos into Deterministic Action*
 
-### The "Method in the Madness" for Distributed Systems
-In high-scale microservice environments, a single failure often ripples through the network, creating a cascade of cryptic logs. The **Distributed AI Sentinel** is an AI-Native Infrastructure agent designed to perform **Causal Discovery** across service boundaries using local LLMs.
+The **Distributed AI Sentinel** is a Java-based SRE Orchestrator that uses local LLMs to perform **Causal Inference** across microservice boundaries. It bridges the gap between raw observability data (logs, traces, metrics) and actionable root-cause analysis.
 
 ---
 
-## 🏗️ Architectural Vision
-Standard Observability tells you *when* a system is failing. This Sentinel tells you *why*. 
-By leveraging **OpenTelemetry** trace propagation and **LangChain4j**, it reconstructs the span tree and uses a local reasoning engine to identify root causes in seconds, not hours.
+## 🏗️ System Architecture & Design Decisions
+
+### 1. The Reasoning Engine (Local-First AI)
+* **Design Choice:** Leverages **Ollama (Llama 3.2)** via **LangChain4j**.
+* **Rationale:** Enterprise infrastructure data is sensitive. A "Local-First" approach ensures that logs and proprietary architecture patterns never leave the private network, addressing the data sovereignty and security requirements of large-scale organizations (e.g., Finance, Automotive, Healthcare).
+
+### 2. Contextual Awareness (RAG Pipeline)
+* **Design Choice:** In-memory Vector Store with **mxbai-embed-large** embeddings.
+* **Rationale:** General-purpose LLMs lack "Tribal Knowledge." By implementing **Retrieval-Augmented Generation**, the Sentinel cross-references live telemetry against internal runbooks and architecture docs to provide context-specific fixes, reducing MTTR (Mean Time To Recovery) significantly.
+
+### 3. Agentic Observability
+* **Vision:** Rather than static dashboards, the Sentinel treats the system as a "Living Knowledge Graph."
+* **Current State:** Simulations of K8s events, Kafka lag, and Spring Boot logs are processed through a reasoning loop.
+* **Roadmap:** Integration with Fabric8 K8s Client and Prometheus API for autonomous system probing.
+
+
+
+---
 
 ## 🛠️ Tech Stack
-- **Language:** Java 21 (leveraging Virtual Threads for high-concurrency telemetry ingestion)
-- **AI Orchestration:** LangChain4j
-- **Inference Engine:** Ollama (running Llama3/Mistral locally)
-- **Tracing Standard:** OpenTelemetry (W3C Trace Context)
+* **Runtime:** Java 21 (Leveraging Virtual Threads for high-concurrency telemetry ingestion)
+* **AI Framework:** LangChain4j
+* **Inference Engine:** Ollama (Llama 3.2 + mxbai-embed-large)
+* **Build Tool:** Maven
 
-## 🚀 Quick Start
-1. **Ensure Ollama is running:** `ollama run llama3`
-2. **Clone and Run:**
-   ```bash
-   mvn clean install
-   java -jar target/sentinel-1.0.jar
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+* Install [Ollama](https://ollama.com/)
+* Pull the required models:
+  ```bash
+  ollama pull llama3.2
+  ollama pull mxbai-embed-large
+  
+### 2 Build the project 
+* Clone the repository:
+  ```bash
+  git clone [https://github.com/anupamojha-eng/distributed-ai-sentinel.git](https://github.com/YOUR_USERNAME/distributed-ai-sentinel.git)
+cd distributed-ai-sentinel
+mvn clean install
+    ```
+
+### 3. Run the Sentinel
+* Execute the main class:
+* ```bash
+    mvn exec:java -Dexec.mainClass="com.sentinel.SentinelApp"
+    ```
