@@ -54,3 +54,6 @@ mvn clean install
 * ```bash
     mvn exec:java -Dexec.mainClass="com.sentinel.SentinelApp"
     ```
+
+
+I'm looking to connect with other Platform Engineers and Architects who are exploring **Agentic Infrastructure**. If you're building in this space, let's talk.

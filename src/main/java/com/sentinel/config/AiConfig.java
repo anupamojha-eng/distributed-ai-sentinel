@@ -19,6 +19,7 @@ public class AiConfig {
                 .baseUrl("http://localhost:11434")
                 .modelName("llama3.2")
                 .timeout(Duration.ofMinutes(2))
+                .temperature(0.0)
                 .build();
 
         // 2. Embedding Model (mxbai-embed-large)
