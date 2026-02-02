@@ -38,3 +38,34 @@ The **Distributed AI Sentinel** is a Java-based SRE Orchestrator that uses local
   ```bash
   ollama pull llama3.2
   ollama pull mxbai-embed-large
+  
+## Build the Project
+
+```bash
+git clone [https://github.com/anupamojha-eng/distributed-ai-sentinel.git](https://github.com/anupamojha-eng/distributed-ai-sentinel.git)
+cd distributed-ai-sentinel
+mvn clean install
+```
+
+
+### 2. Run the Sentinel
+```bash
+mvn exec:java -Dexec.mainClass="com.sentinel.SentinelApp"
+```
+
+#### Roadmap
+[x] Phase 1: Log Correlation & RAG-based RCA (Current).
+
+[ ] Phase 2: Live K8s Cluster Integration (Fabric8) to pull real-time pod events.
+
+[ ] Phase 3: Knowledge Graph expansion (Confluence/Miro API) to index architectural design decisions (ADRs).
+
+[ ] Phase 4: Automated Remediation suggestions via Crossplane or Terraform.
+
+🤝 Connection
+I'm looking to connect with other Platform Engineers and Architects who are exploring Agentic Infrastructure. If you're
+building in this space, let's talk.
+
+Author: Anupam Ojha
+
+LinkedIn: https://www.linkedin.com/in/anupamojha/
